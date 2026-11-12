@@ -77,6 +77,16 @@ npm run dev
 > ไม่ต้องใช้ `npx wrangler deploy` เพราะคำสั่งนี้เป็นของ Cloudflare Workers
 > และไม่ใช่ขั้นตอนที่จำเป็นสำหรับ Pages
 
+หากหน้า Cloudflare บังคับให้กรอก `Deploy command` (หน้าจอแบบ Workers Builds)
+โปรเจกต์นี้มี [wrangler.jsonc](wrangler.jsonc) สำหรับ deploy ไฟล์ static โดยตรงแล้ว
+ให้ตั้งค่า `Deploy command` เป็น:
+
+```text
+npx wrangler deploy
+```
+
+ค่า `Build command` ยังคงเป็น `npm run build` และ `Root directory` เป็น `/`
+
 หากหน้า Cloudflare แสดง `Worker Name` หรือกำลังรัน `npx wrangler deploy`
 แสดงว่าเลือกประเภท Workers แทน Pages ให้ลบโปรเจกต์นั้นแล้วสร้างใหม่ผ่าน
 `Workers & Pages > Create application > Pages > Connect to Git`
