@@ -58,6 +58,21 @@ npm run dev
 
 แอปใช้ hash routing เพื่อให้เปิดหน้า `#/login`, `#/admin` และ `#/employee` ได้แม้ refresh บน GitHub Pages
 
+## Deploy ด้วย Cloudflare Pages
+
+ใน Cloudflare Dashboard ให้ไปที่ `Workers & Pages > Create application > Pages > Connect to Git`
+แล้วเลือก repository `6631502051-ops/vanness-deploy` โดยตั้งค่า:
+
+| ค่า | ตั้งเป็น |
+|---|---|
+| Production branch | `main` |
+| Framework preset | `Vite` |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Node.js version | `20` |
+
+เมื่อ push commit ใหม่เข้า `main` Cloudflare Pages จะ build และ deploy อัตโนมัติ
+
 ## Deploy ด้วย Docker
 
 ใช้ Docker Compose ได้บนเครื่องหรือบริการที่รองรับ Docker:
