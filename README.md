@@ -73,6 +73,19 @@ npm run dev
 
 เมื่อ push commit ใหม่เข้า `main` Cloudflare Pages จะ build และ deploy อัตโนมัติ
 
+> **สำคัญ:** สำหรับ Cloudflare Pages ให้เว้นช่อง `Deploy command` ว่าง
+> ไม่ต้องใช้ `npx wrangler deploy` เพราะคำสั่งนี้เป็นของ Cloudflare Workers
+> และไม่ใช่ขั้นตอนที่จำเป็นสำหรับ Pages
+
+หากหน้า Cloudflare แสดง `Worker Name` หรือกำลังรัน `npx wrangler deploy`
+แสดงว่าเลือกประเภท Workers แทน Pages ให้ลบโปรเจกต์นั้นแล้วสร้างใหม่ผ่าน
+`Workers & Pages > Create application > Pages > Connect to Git`
+จากนั้นใช้ค่า Build command เป็น `npm run build` และ Output directory เป็น `dist`
+
+ถ้าต้องการใช้ Workers จริง ๆ แทน Pages ต้องตั้งค่า static assets ของ Wrangler
+เพิ่มเติมและใช้ Vite รุ่นที่ Wrangler รองรับ ไม่ควรแก้ด้วยการใส่ `npx wrangler deploy`
+ใน Cloudflare Pages
+
 ## Deploy ด้วย Docker
 
 ใช้ Docker Compose ได้บนเครื่องหรือบริการที่รองรับ Docker:
